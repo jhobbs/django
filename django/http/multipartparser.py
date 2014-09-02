@@ -209,12 +209,12 @@ class MultiPartParser(object):
                                 # We should always decode base64 chunks by multiple of 4,
                                 # ignoring whitespace.
 
-                                stripped_chunk = "".join(chunk.split())
+                                stripped_chunk = b"".join(chunk.split())
 
                                 remaining = len(stripped_chunk) % 4
                                 while remaining != 0:
                                     over_chunk = field_stream.read(4 - remaining)
-                                    stripped_chunk += "".join(over_chunk.split())
+                                    stripped_chunk += b"".join(over_chunk.split())
                                     remaining = len(stripped_chunk) % 4
 
                                 try:
